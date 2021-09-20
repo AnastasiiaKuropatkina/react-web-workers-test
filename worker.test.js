@@ -5,7 +5,7 @@ let path = require('path');
 
 let dom;
 let document;
-const Worker = require("worker.js");
+const Worker = require("./worker.js");
 const codeDirectory = path.join(__dirname, '..');
 const html = fs.readFileSync(codeDirectory + '/index.html', 'utf-8');
 const options = {
