@@ -4,6 +4,12 @@ module.exports = class Worker {
     this.onmessage = () => { };
   }
 
+  addEventListener(eventType, callback){
+    if (eventType === 'message'){
+      this.onmessage = callback;
+    }
+  }
+
   postMessage(data) {    
     this.onmessage({data: Math.pow(data.data, 2)});
   }
