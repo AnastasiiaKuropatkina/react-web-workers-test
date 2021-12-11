@@ -1,3 +1,8 @@
+function fibonacci(n) {
+    if (n < 2) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
 module.exports = class Worker {
   constructor() {
     // `onmessage` should be overwritten by the code using the worker.
@@ -11,6 +16,6 @@ module.exports = class Worker {
   }
 
   postMessage(data) {    
-    this.onmessage({data: Math.pow(data.data, 2)});
+    this.onmessage({data: fibonacci(data.data)});
   }
 }
