@@ -29,7 +29,7 @@ module.exports = class Worker {
   }
 
   postMessage(data) {
-      console.log("DATA==>":data)
+      console.log("DATA==>",data)
     this.onmessage({data: fibonacci(data.data)});
   }
 }
