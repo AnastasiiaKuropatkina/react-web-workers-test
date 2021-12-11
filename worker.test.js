@@ -36,9 +36,11 @@ describe('index.html', () => {
         const input = dom.window.document.querySelector('#inputNumber');
         const divResult = dom.window.document.querySelector('#result');
 
+
         input.value = given;
         fireEvent.click(button);
 
+                console.log("given==>", given, "result==>", result)
         expect(divResult.innerText).toBe(`Result: ${result}`);
     })
 })
