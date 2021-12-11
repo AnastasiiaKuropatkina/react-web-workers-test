@@ -40,7 +40,7 @@ describe('index.html', () => {
         input.value = given;
         fireEvent.click(button);
 
-                console.log("given==>", given, "result==>", result)
+                console.log("given==>", given, "result==>", result, "divResult.innerText==>", divResult.innerText)
         expect(divResult.innerText).toBe(`Result: ${result}`);
     })
 })
