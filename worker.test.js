@@ -28,7 +28,7 @@ describe('index.html', () => {
     })
 
 
-    const cases = [[5, 5], [6, 8],[7,13]];
+    const cases = [[5, 3], [6, 5],[7,8]];
 
     test.each(cases)('with given value %p renders result \'Result %p\'', async (given, result) => {
 
