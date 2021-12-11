@@ -9,36 +9,36 @@ const Worker = require("./worker.js");
 const codeDirectory = path.join(__dirname, '..');
 const html = fs.readFileSync(codeDirectory + '/index.html', 'utf-8');
 const options = {
-  resources: 'usable',
-  runScripts: 'dangerously',
+    resources: 'usable',
+    runScripts: 'dangerously',
 };
 const scriptContent = fs.readFileSync(codeDirectory + '/script.js', 'utf8');
 
 describe('index.html', () => {
-  beforeEach(() => {
-    dom = new JSDOM(html, options)
+    beforeEach(() => {
+        dom = new JSDOM(html, options)
 
-    let window = dom.window;
-    window.Worker = Worker;
-    document = window.document;
+        let window = dom.window;
+        window.Worker = Worker;
+        document = window.document;
 
-    let scriptElement = document.createElement('script');
-    scriptElement.textContent = scriptContent;
-    document.head.appendChild(scriptElement);
-  })
+        let scriptElement = document.createElement('script');
+        scriptElement.textContent = scriptContent;
+        document.head.appendChild(scriptElement);
+    })
 
 
-  const cases = [[5, 25], [-2, 4], [16, 256]];
+    const cases = [[5, 5], [6, 8],[7,13]];
 
-  test.each(cases)('with given value %p renders result \'Result %p\'', async (given, result) => {
+    test.each(cases)('with given value %p renders result \'Result %p\'', async (given, result) => {
 
-    const button = getByText(document, 'Calculate')
-    const input = dom.window.document.querySelector('#inputNumber');
-    const divResult = dom.window.document.querySelector('#result');
+        const button = getByText(document, 'Calculate')
+        const input = dom.window.document.querySelector('#inputNumber');
+        const divResult = dom.window.document.querySelector('#result');
 
-    input.value = given;
-    fireEvent.click(button);
+        input.value = given;
+        fireEvent.click(button);
 
-    expect(divResult.innerText).toBe(`Result: ${result}`);
-  })
+        expect(divResult.innerText).toBe(`Result: ${result}`);
+    })
 })
